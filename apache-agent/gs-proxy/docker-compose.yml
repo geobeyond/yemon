@@ -1,6 +1,6 @@
-# test
+# geoserver-proxy
 http:
-  container_name: atest
+  container_name: gs-proxy
   extra_hosts:
       - "openam.example.com:192.168.99.1"
   build: .
