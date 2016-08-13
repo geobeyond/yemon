@@ -9,7 +9,7 @@ customize the child image. The e
 The child image will be configured using ssoconfig, ssoadm and other scripts. At completion of the child image build, 
 the OpenAM instance should be fully configured and ready to run.
 
-See the sample/Dockerfile for an example
+See the example/Dockerfile for an example
 
 # Configuration 
 
@@ -30,24 +30,24 @@ See https://github.com/docker/docker/issues/13490  for more details.
 You should keep the derived image private - just like you would protect the disk where OpenAM is installed. 
  
  
-# Sample 
+# Example 
 
-See the sample/ for an example of how to build and configure a child image.  To build and run:
+See the example/ for an example of how to build and configure a child image.  To build and run:
 
-Put an entry in /etc/hosts for openam.test.com that points to the IP of where docker runs in your 
+Put an entry in /etc/hosts for openam.example.com that points to the IP of where docker runs in your 
 environment. 
 
 Do the following:
 
 ```
 docker build -t forgerock/openam-onbuild . 
-cd sample
+cd example
 docker-compose build
 docker-compose up
 ```
 
 
-Open  http://openam.test.com:9080/openam in your browser. Log on with amadmin/password
+Open  http://openam.example.com:8080/openam in your browser. Log on with amadmin/password
 
 
 

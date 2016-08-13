@@ -2,7 +2,7 @@
 http:
   container_name: gs-proxy
   extra_hosts:
-      - "openam.example.com:192.168.99.1"
+      - "openam.example.com:192.168.99.100"
   build: .
   ports:
       - "9000:80"
