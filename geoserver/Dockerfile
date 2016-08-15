@@ -17,11 +17,16 @@ RUN mkdir -p /tmp/tomcat/download
 ENV WARS_DOWNLOADED /tmp/tomcat/download
 WORKDIR ${WARS_DOWNLOADED}
 
-ENV GEOSERVER_VERSION=2.9.0
+ENV GEOSERVER_VERSION=2.9-SNAPSHOT
 
-RUN curl -L -O http://sourceforge.net/projects/geoserver/files/GeoServer/$GEOSERVER_VERSION/geoserver-$GEOSERVER_VERSION-war.zip \
-&& unzip -x -d ${WARS_DOWNLOADED} geoserver-$GEOSERVER_VERSION-war.zip
+# RUN curl -L -O http://sourceforge.net/projects/geoserver/files/GeoServer/$GEOSERVER_VERSION/geoserver-$GEOSERVER_VERSION-war.zip \
+# && unzip -x -d ${WARS_DOWNLOADED} geoserver-$GEOSERVER_VERSION-war.zip
 
+COPY download.sh ${WARS_DOWNLOADED}
+RUN chmod +x ${WARS_DOWNLOADED}/download.sh
+RUN ${WARS_DOWNLOADED}/download.sh $GEOSERVER_VERSION $WARS_DOWNLOADED
+
+# for debugging
 RUN ls -lart
 #################################################
 
