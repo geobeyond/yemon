@@ -1,4 +1,22 @@
-geoserver:
-  build: .
-  ports:
-     - "8888:8080"
+version: '2'
+
+services:
+  geoserver:
+    build: .
+    ports:
+      - "8888:8080"
+    # docker-compose up works after the command to create a named container as below
+    # docker run --name geoserver_data_dir -v /var/lib/geoserver/data alpine /bin/true
+    # after creating a geoserver workspace it is maintained if I run docker-compose stop and then start
+    volumes_from:
+      # - container:geoserver_data_dir
+      - data_dir_conf
+  data_dir_conf:
+    image: alpine
+    container_name: geoserver_data_dir
+    command: /bin/true
+    volumes:
+      - /var/lib/geoserver/data 
+
+volumes:
+  geoserver_data_dir:

@@ -31,7 +31,7 @@ RUN ls -lart
 #################################################
 
 # Set the GEOSERVER_DATA_DIR
-RUN mkdir -p /var/lib/geoserver/data
+#RUN mkdir -p /var/lib/geoserver/data
 VOLUME /var/lib/geoserver/data
 ENV GEOSERVER_DATA_DIR /var/lib/geoserver/data
 
